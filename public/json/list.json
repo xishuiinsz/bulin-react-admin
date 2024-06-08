@@ -7,11 +7,6 @@
 			"path": "/home/index"
 		},
 		{
-			"icon": "FileImageOutlined",
-			"title": "在线海报",
-			"path": "/poster/index"
-		},
-		{
 			"icon": "AreaChartOutlined",
 			"title": "数据大屏",
 			"path": "/dataScreen/index"
@@ -30,6 +25,18 @@
 					"icon": "AppstoreOutlined",
 					"path": "/proTable/useComponent",
 					"title": "使用 Component"
+				}
+			]
+		},
+		{
+			"icon": "FundOutlined",
+			"title": "threejs3D可视化",
+			"path": "/threejsVisual",
+			"children": [
+				{
+					"icon": "AppstoreOutlined",
+					"path": "/threejsVisual/map3D",
+					"title": "3D中国地图"
 				}
 			]
 		},
