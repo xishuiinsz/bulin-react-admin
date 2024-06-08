@@ -70,7 +70,7 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
 				symbolId: "icon-[dir]-[name]"
 			}),
 			// * EsLint 报错信息显示在浏览器界面上
-			eslintPlugin(),
+			env.VITE_USER_NODE_ENV !== "development" && eslintPlugin(),
 			// * 是否生成包预览
 			viteEnv.VITE_REPORT && visualizer(),
 			// * gzip compress
