@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Layout } from "antd";
 import { setAuthButtons } from "@/redux/modules/auth/action";
 import { updateCollapse } from "@/redux/modules/menu/action";
@@ -14,7 +14,7 @@ import "./index.less";
 const LayoutIndex = (props: any) => {
 	const { Sider, Content } = Layout;
 	const { isCollapse, updateCollapse, setAuthButtons } = props;
-
+	const location = useLocation();
 	// 获取按钮权限列表
 	const getAuthButtonsList = async () => {
 		const { data } = await getAuthorButtons();
@@ -32,11 +32,18 @@ const LayoutIndex = (props: any) => {
 		};
 	};
 
+	const hashChangeHandler = () => {
+		if (self !== parent) {
+			const data = { type: "hashchange", ...location };
+			self.parent.postMessage(data, "http://bulin.com:8080");
+		}
+	};
+
 	useEffect(() => {
 		listeningWindow();
 		getAuthButtonsList();
 	}, []);
-
+	useEffect(hashChangeHandler, [location]);
 	return (
 		// 这里不用 Layout 组件原因是切换页面时样式会先错乱然后在正常显示，造成页面闪屏效果
 		<section className="container">
