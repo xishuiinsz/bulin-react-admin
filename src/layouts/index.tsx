@@ -35,7 +35,7 @@ const LayoutIndex = (props: any) => {
 	const hashChangeHandler = () => {
 		if (self !== parent) {
 			const data = { type: "hashchange", ...location };
-			self.parent.postMessage(data, "http://bulin.com:8080");
+			self.parent.postMessage(data, "http://localhost.bulin.com:8080");
 		}
 	};
 
